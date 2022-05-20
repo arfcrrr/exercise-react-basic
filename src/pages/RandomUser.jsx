@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Card, Button } from 'react-bootstrap';
+import { Container, Card, Button } from 'react-bootstrap';
 import ButtonRandomize from '../components/ButtonRandomize';
 import '../App.css';
 import axios from 'axios';
@@ -58,10 +58,9 @@ const RandomUser = () => {
     }
 
     return (
-        <div className="container-fluid d-flex flex-column justify-content-center align-items-center">
-            <h1 className="text-center m-4">
-                This is a Random User Generator Page.
-            </h1>
+        <Container fluid className="d-flex flex-column justify-content-center align-items-center">
+            <h1 className="m-4">Random User Generator Page</h1>
+            <h3>Click button below to randomize user's data!</h3>
             <ButtonRandomize
                 isActive={activeUser}
                 clicked={onClickHandler}
@@ -80,7 +79,7 @@ const RandomUser = () => {
                                             <TextGenerator user={user} />
                                         </Card.Title>
                                         <Card.Text>
-                                            Hover over the icon to see the details!
+                                            Hover over the icon below to see the details! <i className="fas fa-arrow-circle-down"></i>
                                         </Card.Text>
                                         <div className="user__icons">
                                             {icons.map((icon, index) => {
@@ -99,7 +98,7 @@ const RandomUser = () => {
                     )
                 )
             }
-        </div>
+        </Container>
     );
 }
 
