@@ -1,5 +1,5 @@
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
-import { Home, About, Products, RandomUser } from './pages';
+import { BrowserRouter, Routes, Route, } from 'react-router-dom';
+import { Home, About, RandomUser, ListUser } from './pages';
 import Navigation from './components/Navigation';
 import Footer from './components/Footer';
 import './App.css';
@@ -17,9 +17,11 @@ function App() {
         </Route>
         <Route path="/random-user" element={<RandomUser />}>
         </Route>
+        <Route path="/list-user" element={<ListUser />}>
+        </Route>
       </Routes>
 
-      <Footer/>
+      <Footer />
     </BrowserRouter>
   );
 }
