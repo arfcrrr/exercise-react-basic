@@ -40,7 +40,6 @@ const Login = () => {
                         <Form.Label>Email</Form.Label>
                         <Form.Control
                             type="email"
-                            name="email"
                             placeholder="Your Email Here"
                             onChange={(e) => setEmail(e.target.value)}
                             required />
@@ -50,7 +49,7 @@ const Login = () => {
                     </div>
                 </Form>
             ) : (
-                <div className="d-flex flex-column justify-content-center">
+                <div className="d-flex flex-column justify-content-center m-5">
                     <Button onClick={handleLogout} variant="danger" type="submit">Logout</Button>
                 </div>
             )}
