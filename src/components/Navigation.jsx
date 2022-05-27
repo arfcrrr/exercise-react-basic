@@ -1,4 +1,4 @@
-import { Navbar, Nav, Container } from 'react-bootstrap';
+import { Navbar, Nav, Container, Button } from 'react-bootstrap';
 
 const Navigation = () => {
     return (
@@ -14,6 +14,9 @@ const Navigation = () => {
                         <Nav.Link href="/about">About</Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
+                <Button variant="secondary">
+                    <Nav.Link href="/login">Login</Nav.Link>
+                </Button>
             </Container>
         </Navbar>
     )
