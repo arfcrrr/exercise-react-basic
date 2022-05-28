@@ -10,6 +10,7 @@ const Login = () => {
 
     useEffect(() => {
         token ? setIsLoggedIn(true) : setIsLoggedIn(false)
+        console.log("IS LOGGED IN: ", isLoggedIn);
     }, [token])
 
     const handleSubmit = (e) => {
@@ -51,6 +52,7 @@ const Login = () => {
                             onSuccess={credentialResponse => {
                                 console.log(credentialResponse);
                                 localStorage.setItem('token', credentialResponse.credential);
+                                setIsLoggedIn(true);
                             }}
                             onError={() => {
                                 console.log('Login Failed');
