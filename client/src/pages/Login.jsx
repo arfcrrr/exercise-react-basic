@@ -1,6 +1,7 @@
-import { useEffect, useState } from 'react';
+import { React, useEffect, useState } from 'react';
 import { Container, Form, Button } from 'react-bootstrap';
 import { ReactComponent as IllustrationLogin } from '../illustration_login.svg';
+import { GoogleLogin } from '@react-oauth/google';
 
 const Login = () => {
     const [email, setEmail] = useState('');
@@ -45,7 +46,17 @@ const Login = () => {
                             required />
                     </Form.Group>
                     <div className="d-flex flex-column justify-content-center">
-                        <Button variant="success" type="submit">Login</Button>
+                        <Button variant="success" type="submit" className="mb-2">Login</Button>
+                        <GoogleLogin
+                            onSuccess={credentialResponse => {
+                                console.log(credentialResponse);
+                                localStorage.setItem('token', credentialResponse.credential);
+                            }}
+                            onError={() => {
+                                console.log('Login Failed');
+                            }}
+                            useOneTap
+                        />
                     </div>
                 </Form>
             ) : (

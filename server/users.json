@@ -1,0 +1,34 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Ajeng Arifa Chantika Rindu",
+      "email": "ajengarifacantikarindu@gmail.com",
+      "phone": "081213145381"
+    },
+    {
+      "id": 2,
+      "name": "Harry Potter",
+      "email": "potter@hogwarts.com",
+      "phone": "01242916011"
+    },
+    {
+      "name": "Albus Dumbledore",
+      "email": "albus@hogwarts.com",
+      "phone": "089124814",
+      "id": "0cd776d0a31"
+    },
+    {
+      "id": "f1938897c9a",
+      "name": "Luna Lovegood",
+      "email": "luna@hogwarts.com",
+      "phone": "132190485822"
+    },
+    {
+      "name": "Hermione Granger",
+      "email": "granger@hogwarts.com",
+      "phone": "6893259",
+      "id": "1938897c9ab"
+    }
+  ]
+}
