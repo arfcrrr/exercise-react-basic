@@ -1,25 +1,14 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Container, Row, Col, Form, Button } from 'react-bootstrap';
 import { ReactComponent as IllustrationUser } from '../illustration_user.svg';
 import { uid } from 'uid';
 
+import axios from 'axios';
+
 import List from '../components/List';
 
 const ListUser = () => {
-    const [dataUser, setDataUser] = useState([
-        {
-            id: 1,
-            name: 'Ajeng Arifa Chantika Rindu',
-            email: 'ajengarifacantikarindu@gmail.com',
-            phone: '081213145381',
-        },
-        {
-            id: 2,
-            name: 'Harry Potter',
-            email: 'potter@hogwarts.com',
-            phone: '01242916011',
-        },
-    ]);
+    const [dataUser, setDataUser] = useState([]);
 
     const [isUpdate, setIsUpdate] = useState({
         id: null,
@@ -32,6 +21,15 @@ const ListUser = () => {
         email: '',
         phone: '',
     });
+
+    useEffect(() => {
+        // fetch data from API
+        axios.get('http://localhost:3000/users')
+            .then((res) => {
+                console.log(res.data);
+                setDataUser(res?.data ?? []);
+            });
+    }, [])
 
     const handleChange = (e) => {
         let data = { ...formData };
@@ -54,13 +52,28 @@ const ListUser = () => {
                     dataUser.phone = formData.phone;
                 }
             })
+            axios.put(`http://localhost:3000/users/${isUpdate.id}`,
+                {
+                    name: formData.name,
+                    email: formData.email,
+                    phone: formData.phone
+                })
+                .then((res) => {
+                    alert("Successfully updated data!");
+                })
         } else {
-            data.push({
+            let newData = {
                 id: uid(),
                 name: formData.name,
                 email: formData.email,
-                phone: formData.phone,
-            });
+                phone: formData.phone
+            }
+            data.push(newData);
+
+            axios.post("http://localhost:3000/users", newData)
+                .then((res) => {
+                    alert("Successfully saved data!");
+                })
         }
 
         // add user's data
@@ -92,6 +105,12 @@ const ListUser = () => {
     const handleDelete = (id) => {
         let data = [...dataUser];
         let filteredData = data.filter((dataUser) => dataUser.id !== id);
+
+        axios.delete(`http://localhost:3000/users/${id}`)
+            .then((res) => {
+                alert("Successfully deleted data!");
+            })
+
         setDataUser(filteredData);
     }
 
